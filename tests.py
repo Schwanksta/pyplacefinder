@@ -30,6 +30,13 @@ class GeocoderTest(BaseTest):
         self.assertEquals(len(self.result), 1)
         self.result = self.client.geocode(city='Toledo', locale='es_ES')
         self.assertEquals(len(self.result), 1)
+    
+    def test_reverse_geocode(self):
+        self.result = self.client.reverseGeocode(
+            location="34.05254386312157,-118.24548482894897"
+        )
+        self.assertEquals(len(self.result), 1)
+        self.assertEquals(self.result[0]['street'], 'S Spring St')
 
 
 if __name__ == '__main__':
