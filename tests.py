@@ -18,6 +18,11 @@ class GeocoderTest(BaseTest):
         )
         self.assertEquals(len(self.result), 1)
         self.assertEquals(type(self.result), type([]))
+        self.assertEquals(self.result[0]['quality_type'], 'Point')
+        self.assertEquals(
+            self.result[0]['quality_description'],
+            'Address match with street match'
+        )
         self.result = self.client.geocode(location='Winnetka')
         self.assertEquals(len(self.result), 2)
     
