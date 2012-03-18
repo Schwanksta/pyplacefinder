@@ -24,7 +24,10 @@ class GeocoderTest(BaseTest):
     def test_state_bias(self):
         self.result = self.client.geocode(city='Winnetka', state='CA')
         self.assertEquals(len(self.result), 1)
-
+    
+    def test_country_bias(self):
+        self.result = self.client.geocode(city='Toledo', country='SPAIN')
+        self.assertEquals(len(self.result), 1)
 
 if __name__ == '__main__':
     unittest.main()
