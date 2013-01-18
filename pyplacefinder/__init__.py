@@ -1,7 +1,7 @@
 import urllib
 import json
 
-VERSION = (0, 1, 0, "pre")
+VERSION = (0, 1, 1, "pre")
 def get_version():
   version = '%s.%s' % (VERSION[0], VERSION[1])
   if VERSION[2]:
@@ -19,11 +19,8 @@ class PlaceFinder(object):
     self.appid = appid
   
   def geocode(self, **params):
-    try:
-      results = self.query(params)
-      return results
-    except PlaceFinderException:
-      return None
+    results = self.query(params)
+    return results
   
   def reverseGeocode(self, **params):
     params['gflags'] = 'r'
@@ -38,7 +35,7 @@ class PlaceFinder(object):
     
     try:
       data = json.loads(connection.read())
-      if data['ResultSet']['Error'] > 0:
+      if int(data['ResultSet']['Error']) > 0:
         raise PlaceFinderException(data['ResultSet']['ErrorMessage'])
       else:
         if len(data['ResultSet']['Results']) > 0:
