@@ -1,3 +1,5 @@
+THAT'S ALL, FOLKS. Yahoo's placefinder API as we know it is dead, but lives on as the BOSS PlaceFinder API. Currently, this library will just fail.
+
 # pyplacefinder
 
 Want to know what's awesome?
